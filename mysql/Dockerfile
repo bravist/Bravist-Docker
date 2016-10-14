@@ -1,9 +1,8 @@
-FROM alpine:latest
+FROM mysql:5.6
 MAINTAINER bravist chenghuiyong1987@gmail.com
 
 # 换为国内镜像，以加速docker image制作速度，非中国镜内用户请注释掉下一行
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
-RUN apk update && apk upgrade
 
 #时区配置
 ENV TIMEZONE Asia/Shanghai
@@ -11,23 +10,19 @@ RUN apk add tzdata
 RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
-# 软件包安装
-RUN apk add mysql mysql-client
+WORKDIR /var/lib
 
-# 软件包参数配置
+#配置
 
-RUN mkdir /run/mysqld/ && mkdir -p /apps/mysql/
 COPY my.cnf /etc/mysql/my.cnf
 RUN chmod 644 /etc/mysql/my.cnf
-COPY init_mysql.sh /apps/
-RUN chmod +x /apps/init_mysql.sh
-COPY import.sql /apps/
+COPY init_mysql.sh /var/lib/
+RUN chmod +x /var/lib/init_mysql.sh
+COPY import.sql /var/lib/
 
-WORKDIR /var/lib/mysql
 
 # 端口号配置
 EXPOSE 3306
-VOLUME ["/apps/mysql"]
 
 # 容器命令执行
-CMD ["/apps/init_mysql.sh"]
+CMD ["/var/lib/mysql/init_mysql.sh"]
