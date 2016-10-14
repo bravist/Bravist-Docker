@@ -13,18 +13,16 @@ services:
       - MYSQL_USER=developer
       - MYSQL_PASSWORD=developer
     restart: always
-
-  phpfpm:
-    build: phpfpm
-    image: bravist/phpfpm
+  php-fpm:
+    build: php-fpm
+    image: bravist/php7.0.11-fpm-alpine:1.0
     links:
       - mysql
-    volumes:
-      - "./volumes/apps:/apps"
+    volumes-from:
+      - web-root-docker
     ports:
       - "9000:9000"
     restart: always
-
   nginx:
     build: nginx
     image: bravist/nginx
@@ -35,3 +33,8 @@ services:
     ports:
       - "80:80"
     restart: always
+
+ web-root-docker:
+    image: busybox:latest
+    volumes: ./Server:/mnt/www 
+
