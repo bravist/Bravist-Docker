@@ -1,3 +1,8 @@
+# Version: 1.1 
++ 更新镜像命名空间为：bravist
++ Nginx容器增加443对外端口
++ 更新Maintainer作者
+
 # 版本：1.08 更新记录
 
 * 增加【[windows用户填坑建议](windows用户填坑建议.md)】【[docker基础概念和命令操作](docker基础概念和命令操作.md)】说明文档

@@ -1,8 +1,8 @@
-version: '2'
+version: '3.0'
 services:
   mysql:
     build: mysql
-    image: water/mysql
+    image: bravist/mysql
     volumes:
       - "./volumes/mysql:/apps/mysql"
     ports:
@@ -10,14 +10,13 @@ services:
     environment:
       # 默认的root密码和需要新建的数据库、用户名、密码，若需要重新设置，需要删除volumes/mysql/下面的全部内容，然后重新build
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=your_db_name
       - MYSQL_USER=developer
       - MYSQL_PASSWORD=developer
     restart: always
 
   phpfpm:
     build: phpfpm
-    image: water/phpfpm
+    image: bravist/phpfpm
     links:
       - mysql
     volumes:
@@ -28,7 +27,7 @@ services:
 
   nginx:
     build: nginx
-    image: water/nginx
+    image: bravist/nginx
     links:
       - phpfpm
     volumes_from:

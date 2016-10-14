@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER water youwater@gmail.com
+MAINTAINER  bravist chenghuiyong1987@gmail.com
 
 # 换为国内镜像，以加速docker image制作速度，非中国镜内用户请注释掉下一行
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
@@ -22,7 +22,7 @@ COPY conf/nginx.conf /etc/nginx/
 COPY conf/vhosts.conf /etc/nginx/conf.d/
 
 # 端口号配置
-EXPOSE 80
+EXPOSE 80 443
 VOLUME /apps/
 
 # 容器命令执行
