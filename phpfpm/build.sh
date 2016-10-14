@@ -3,7 +3,7 @@
 # 清除已有的
 docker stop phpfpm
 docker rm phpfpm
-docker rmi water/phpfpm 
+docker rmi bravist/phpfpm 
 
 # 重新生成
-docker build -t water/phpfpm ./
+docker build -t bravist/phpfpm ./
