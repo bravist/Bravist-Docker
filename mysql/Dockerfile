@@ -7,9 +7,10 @@ WORKDIR /var/lib
 
 COPY my.cnf /etc/mysql/my.cnf
 RUN chmod 644 /etc/mysql/my.cnf
-COPY init_mysql.sh /var/lib/
-RUN chmod +x /var/lib/init_mysql.sh
-COPY import.sql /var/lib/
+
+COPY init_mysql.sh /var/lib/mysql
+RUN chmod +x /var/lib/mysql/init_mysql.sh
+COPY import.sql /var/lib/mysql
 
 
 # 端口号配置
