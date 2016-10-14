@@ -25,11 +25,11 @@ services:
     restart: always
   nginx:
     build: nginx
-    image: bravist/nginx
+    image: bravist/nginx:1.0
     links:
-      - phpfpm
+      - php-fpm
     volumes_from:
-      - phpfpm
+      - php-fpm
     ports:
       - "80:80"
     restart: always
