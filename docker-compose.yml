@@ -15,7 +15,7 @@ services:
     restart: always
   php-fpm:
     build: php-fpm
-    image: bravist/php7.0.11-fpm:1.0
+    image: bravist/php-7.0-fpm-alpine:1.0
     links:
       - mysql
     volumes-from:
