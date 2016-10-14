@@ -33,7 +33,7 @@
 
 # 开始使用
 
-* git clone https://github.com/gnulife/dphp.git
+* git clone https://github.com/bravist/sandbox-php-docker && cd sandbox-php-docker 
 * docker-compose build && docker-compose up -d
 * open http://localhost/
 * [可选] 配置别名：source alias.sh
