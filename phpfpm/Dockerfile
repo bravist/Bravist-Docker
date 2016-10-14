@@ -19,9 +19,7 @@ RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 # pdo_mysql 扩展
 RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-enable pdo_mysql
 RUN docker-php-ext-install mysqli
-RUN docker-php-ext-enable mysqli
 
 
 # 端口号配置
