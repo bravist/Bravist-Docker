@@ -22,7 +22,7 @@ RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install mysqli
 
 #工作目录
-mkdir /mnt/www
+RUN mkdir /mnt/www
 WORKDIR /mnt/wwww
 
 # 端口号配置
