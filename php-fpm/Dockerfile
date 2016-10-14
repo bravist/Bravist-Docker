@@ -23,7 +23,7 @@ RUN docker-php-ext-install mysqli
 
 #工作目录
 RUN mkdir /mnt/www
-WORKDIR /mnt/wwww
+WORKDIR /mnt/www
 
 # 端口号配置
 EXPOSE 9000

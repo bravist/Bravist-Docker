@@ -4,7 +4,7 @@ services:
     build: mysql
     image: bravist/mysql
     volumes:
-      - "./volumes/mysql:/apps/mysql"
+      - "./Server/Mysql:/var/lib/mysql"
     ports:
       - "3306:3306"
     environment:

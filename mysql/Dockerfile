@@ -23,7 +23,7 @@ COPY init_mysql.sh /apps/
 RUN chmod +x /apps/init_mysql.sh
 COPY import.sql /apps/
 
-WORKDIR /apps/
+WORKDIR /var/lib/mysql
 
 # 端口号配置
 EXPOSE 3306
