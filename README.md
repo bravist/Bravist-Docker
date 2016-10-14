@@ -2,11 +2,6 @@
 + 更新镜像命名空间为：bravist
 + Nginx容器增加443对外端口
 + 更新Maintainer作者
-
-# 版本：1.08 更新记录
-
-* 增加【[windows用户填坑建议](windows用户填坑建议.md)】【[docker基础概念和命令操作](docker基础概念和命令操作.md)】说明文档
-* 增加配置调整说明
 * 将nginx、php日志也放在host主机volumes/apps/logs/下，方便调试
 * 增加php.ini中max_execution_time的配置
 * 增加php composer包，修改为从国内镜像下载
@@ -21,26 +16,20 @@
 
 # 配置原则
 
-* 尽可能小，保持alpine的优势
-* 尽可能少改动，保持原生docker+alpine的优势
+* 使用docker hub官方应用mysql/php/nginx，具体参考*/Dockerfile
 * 默认采用中国大陆国内镜像，加速docker build的过程
 * 默认采用Asia/Shanghai时区，国人开发更方便
 * 默认配置好nginx多虚拟主机环境，可以在host主机按范本修改虚拟主机配置以满足自己的需求
 * 默认配置好php-fpm环境，gd、mcrypt等常见模块均可直接使用
 * 配置文件、程序开发代码、数据、日志均放在host主机，通过volume挂载到相应容器，并可跨容器共享访问
 
-# 效果如何？
-
-* 整个配置包，72KB.
-* 在【macbook pro 15 英寸，2014 年中】电脑，电信20M宽带中执行`date && docker-compose build && docker-compose up -d && date `，总共费用1分钟07秒。
-* 总共生成4个镜像，合计：282MB
 
 # 模块组成
 
 * alpine 最新版为基础包，目前是3.4
-* nginx 1.10.1
-* mariaDB 10.1.17 兼容mysql 5.6 
-* php 5.6.26
+* nginx 1.11.5
+* mysql 5.6
+* php 7.0
 
 # 开始使用
 
@@ -55,16 +44,11 @@
 
     修改里面server_name和root名称为自己想要定义的域名，然后将这个域名添加到/etc/hosts文件，即可建立自己的虚拟主机
 
-*   php模块自定义：phpfpm/Dockerfile
-
-        参照注释自行修改即可
-
 *   mysql默认帐号密码：docker-compose.yml， 可以根据需要修改，其他配置可在mysql/my.cnf中修改
 
     ```yaml
         environment:
     - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_DATABASE=your_db_name
     - MYSQL_USER=developer
     - MYSQL_PASSWORD=developer
     ```
@@ -73,10 +57,4 @@
 
       `docker-compose build && docker-compose up -d`
 
-# 疑问与解答 
 
-* 为什么我build的速度很慢？根本达不到文中所说的速度？
-
-  整个镜像包的build过程已全部配置成国内镜像，理论上速度是非常快的，docker本身也要配置成采用国内镜像，方法可自行搜索：docker 国内加速。每台电脑、网络环境都不一样，上面的时间是我在我的电脑上电信20M宽度环境下的build速度，仅供参考。
-
-* 其他有关docker基本概念和命令操作，请参考【[docker基础概念和命令操作](docker基础概念和命令操作.md)】。
