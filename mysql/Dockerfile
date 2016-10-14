@@ -25,4 +25,7 @@ COPY import.sql /var/lib/
 EXPOSE 3306
 
 # 容器命令执行
-CMD ["/var/lib/mysql/init_mysql.sh"]
+
+ENTRYPOINT ["/var/lib/mysql/init_mysql.sh"]
+
+CMD ["mysqld"]
