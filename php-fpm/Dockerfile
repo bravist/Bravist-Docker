@@ -1,4 +1,4 @@
-FROM php:7.0.11-fpm-alpine
+FROM php:7.0.11-fpm
 MAINTAINER bravist chenghuiyong1987@gmail.com
 
 # 换为国内镜像，以加速docker image制作速度，非中国镜内用户请注释掉下一行
