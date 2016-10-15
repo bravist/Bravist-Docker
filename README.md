@@ -32,10 +32,10 @@
 * php 7.0
 
 # 开始使用
-
-* git clone https://github.com/bravist/sandbox-php-docker && cd sandbox-php-docker 
-* docker-compose build && docker-compose up -d
-* open http://localhost/
+* 进入项目主目录的上一级目录： cd ~/server
+* 克隆仓库：git clone https://github.com/bravist/sandbox-php-docker && cd sandbox-php-docker 
+* 构建并运行：docker-compose build && docker-compose up -d
+* 查看 nginx/conf/vhosts.conf，添加server_name到host, 并访问
 * [可选] 配置别名：source alias.sh
 
 # 配置调整

@@ -30,19 +30,21 @@ services:
       - php-fpm
     volumes_from:
       - web-logs-docker
+    volumes: 
+      - "../Runtime/Nginx:/etc/nginx/conf.d"
     ports:
       - "80:80"
     restart: always
   web-root-docker:
     image: busybox:latest
     volumes: 
-      - "./Server:/mnt/www"
+      - "../Server:/mnt/www"
   web-logs-docker:
     image: busybox:latest
     volumes: 
-      - "./Server/logs:/var/log"
+      - "../Runtime/logs:/var/log"
   mysql-data-docker:
     image: busybox:latest
     volumes: 
-      - "./Server/Mysql:/var/lib"
+      - "../Runtime/Mysql:/var/lib"
 
