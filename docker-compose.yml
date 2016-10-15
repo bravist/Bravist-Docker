@@ -11,7 +11,7 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
-    restart: always
+    restart: on-failure:3
   php-fpm:
     build: php-fpm
     image: bravist/php-7.0-fpm-alpine:1.0
@@ -21,11 +21,13 @@ services:
       - web-root-docker
     ports:
       - "9000:9000"
-    restart: always
+    restart: on-failure:3
   nginx:
     build: nginx
     image: bravist/nginx:1.0
     links:
+      - php-fpm
+    volumes_from:
       - php-fpm
     volumes: 
       - "../Runtime/Nginx:/etc/nginx/conf.d"
@@ -33,7 +35,7 @@ services:
       - "../Runtime/logs/nginx:/var/log/nginx"
     ports:
       - "80:80"
-    restart: always
+    restart: on-failure:3
   web-root-docker:
     image: busybox:latest
     volumes: 
