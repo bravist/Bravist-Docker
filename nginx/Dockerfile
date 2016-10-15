@@ -12,13 +12,12 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
 
+WORKDIR /usr/share/nginx/html
 
 # 端口号配置
 EXPOSE 80 443
 
-RUN mkdir -p /nginx/nginx
-RUN mkdir -p /var/log/nginx/
-VOLUME /nginx
+VOLUME ["/var/log/nginx"]
 
 
 COPY conf/ /etc/nginx/conf.d/

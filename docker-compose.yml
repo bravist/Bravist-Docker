@@ -5,12 +5,11 @@ services:
     image: bravist/mysql-5.6:1.0
     volumes_from:
       - "mysql-data-docker"
-    volumes_from:
-      - "web-logs-docker"
+    volumes:
+      - "../Runtime/logs/mysql:/var/log/mysql"
     ports:
       - "3306:3306"
     environment:
-      # 默认的root密码和需要新建的数据库、用户名、密码，若需要重新设置，需要删除volumes/mysql/下面的全部内容，然后重新build
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
@@ -32,6 +31,8 @@ services:
       - php-fpm
     volumes: 
       - "../Runtime/Nginx:/etc/nginx/conf.d"
+    volumes: 
+      - "../Runtime/logs/nginx:/var/log/nginx"
     ports:
       - "80:80"
     restart: always
@@ -39,10 +40,6 @@ services:
     image: busybox:latest
     volumes: 
       - "../Server:/mnt/www"
-  web-logs-docker:
-    image: busybox:latest
-    volumes: 
-      - "../Runtime/logs:/var/log"
   mysql-data-docker:
     image: busybox:latest
     volumes: 
