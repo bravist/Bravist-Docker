@@ -5,8 +5,8 @@ services:
     image: bravist/mysql-5.6:1.0
     volumes_from:
       - "mysql-data-docker"
-    volumes:
-      - "../Runtime/logs/mysql:/var/log/mysql"
+#    volumes:
+#      - "../Runtime/logs/mysql:/var/log/mysql"
     ports:
       - "3306:3306"
     environment:
