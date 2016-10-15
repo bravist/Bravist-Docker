@@ -33,7 +33,7 @@ services:
     ports:
       - "80:80"
     restart: always
- web-root-docker:
+  web-root-docker:
     image: busybox:latest
     volumes: ./Server:/mnt/www 
 
