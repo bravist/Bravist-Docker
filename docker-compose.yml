@@ -1,7 +1,7 @@
 version: '2'
 services:
   mariadb:
-    build: mysql
+    build: mariadb
     image: bravist/mariadb:1.0
     volumes_from:
       - "mysql-data-docker"
@@ -16,7 +16,7 @@ services:
     build: php-fpm
     image: bravist/php-7.0-fpm-alpine:1.0
     links:
-      - mysql
+      - mariadb
     volumes_from:
       - web-root-docker
     ports:
