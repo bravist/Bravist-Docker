@@ -17,6 +17,7 @@ RUN echo $TIMEZONE > /etc/timezone
 EXPOSE 80 443
 
 RUN mkdir -p /nginx/nginx
+RUN mkdir -p /var/log/nginx/
 VOLUME /nginx
 
 

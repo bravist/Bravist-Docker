@@ -30,8 +30,6 @@ services:
     image: bravist/nginx:1.0
     links:
       - php-fpm
-    volumes_from:
-      - web-logs-docker
     volumes: 
       - "../Runtime/Nginx:/etc/nginx/conf.d"
     ports:
