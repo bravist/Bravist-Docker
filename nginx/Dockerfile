@@ -16,9 +16,9 @@ RUN echo $TIMEZONE > /etc/timezone
 # 端口号配置
 EXPOSE 80 443
 
-RUN mkdir -p /var/log/nginx
-
 VOLUME /nginx
+
+RUN mkdir -p /nginx/nginx
 
 COPY conf/ /etc/nginx/conf.d/
 
