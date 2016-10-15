@@ -43,5 +43,5 @@ services:
   mysql-data-docker:
     image: busybox:latest
     volumes: 
-      - "../Runtime/Mysql:/var/lib"
+      - "../Runtime/Mysql:/var/lib/mysql"
 
