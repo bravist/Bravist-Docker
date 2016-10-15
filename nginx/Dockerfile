@@ -12,7 +12,7 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
 
-WORKDIR /usr/share/nginx/html
+WORKDIR /mnt/www
 
 # 端口号配置
 EXPOSE 80 443
