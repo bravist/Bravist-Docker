@@ -31,8 +31,8 @@ services:
       - php-fpm
     volumes: 
       - "../Runtime/Nginx:/etc/nginx/conf.d"
-    volumes: 
-      - "../Runtime/logs/nginx:/var/log/nginx"
+    # volumes: 
+    #   - "../Runtime/logs/nginx:/var/log/nginx"
     ports:
       - "80:80"
     restart: on-failure:3
