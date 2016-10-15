@@ -6,11 +6,6 @@ RUN mkdir -p /var/log
 
 VOLUME /mysql
 
-#配置
-
-COPY my.cnf /etc/mysql/my.cnf
-RUN chmod 644 /etc/mysql/my.cnf
-
 
 # 端口号配置
 EXPOSE 3306
