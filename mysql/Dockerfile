@@ -1,7 +1,9 @@
 FROM mysql:5.6
 MAINTAINER bravist chenghuiyong1987@gmail.com
 
-WORKDIR /var/lib
+WORKDIR /mysql
+
+VOLUME /mysql
 
 #配置
 
