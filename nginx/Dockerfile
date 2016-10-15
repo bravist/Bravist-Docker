@@ -19,6 +19,8 @@ EXPOSE 80 443
 VOLUME /nginx
 
 RUN mkdir -p /nginx/nginx
+RUN touch /nginx/nginx/error.log
+RUN chmod 644 /nginx/nginx/error.log
 
 COPY conf/ /etc/nginx/conf.d/
 
