@@ -18,7 +18,7 @@ services:
     image: bravist/php-7.0-fpm-alpine:1.0
     links:
       - mysql
-    volumes-from:
+    volumes_from:
       - web-root-docker
     ports:
       - "9000:9000"
