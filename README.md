@@ -16,12 +16,12 @@
 
 # 配置原则
 
+* 客户端推荐配置加速器：https://www.daocloud.io/mirror#accelerator-doc
 * 使用docker hub官方应用mysql/php/nginx，具体参考*/Dockerfile
-* 默认采用中国大陆国内镜像，加速docker build的过程
 * 默认采用Asia/Shanghai时区，国人开发更方便
 * 默认配置好nginx多虚拟主机环境，可以在host主机按范本修改虚拟主机配置以满足自己的需求
 * 默认配置好php-fpm环境，gd、mcrypt等常见模块均可直接使用
-* 配置文件、程序开发代码、数据、日志均放在host主机，通过volume挂载到相应容器，并可跨容器共享访问
+* 配置文件、程序开发代码、数据、日志均放在host主机，具体位置：本地仓库同级Runtime目录
 
 
 # 模块组成
