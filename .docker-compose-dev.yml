@@ -1,0 +1,57 @@
+version: '2'
+services:
+  mariadb:
+    build: mariadb
+    image: bravist/mariadb:1.0
+    volumes_from:
+      - "mysql-data-docker"
+#    volumes:
+#      - "../Runtime/logs/mysql:/var/log/mysql"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    restart: on-failure:3
+  php-fpm:
+    build: php-fpm
+    image: bravist/php-7.0-fpm-alpine:1.0
+    links:
+      - mariadb
+    volumes_from:
+      - web-root-docker
+    ports:
+      - "9000:9000"
+    restart: on-failure:3
+  nginx:
+    build: nginx
+    image: bravist/nginx:1.0
+    links:
+      - php-fpm
+    volumes_from:
+      - php-fpm
+    volumes: 
+      - "../Runtime/Nginx:/etc/nginx/conf.d"
+    # volumes: 
+    #   - "../Runtime/logs/nginx:/var/log/nginx"
+    ports:
+      - "80:80"
+    restart: on-failure:3
+  web-root-docker:
+    image: busybox:latest
+    volumes: 
+      - "../Server:/mnt/www"
+  mysql-data-docker:
+    image: busybox:latest
+    volumes: 
+      - "../Runtime/Mysql:/var/lib/mysql"
+  app-unison:
+    volumes: 
+      -  sourcecode-unison-sync:/mnt/www:rw
+    volumes: 
+      -  mysqldata-unison-sync:/var/lib/mysql:rw 
+volumes:
+    sourcecode-unison-sync: 
+      external: true
+    mysqldata-unison-sync: 
+      external: true
+
