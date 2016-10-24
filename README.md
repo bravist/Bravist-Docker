@@ -17,6 +17,7 @@
 # 配置原则
 
 * 客户端推荐配置加速器：https://www.daocloud.io/mirror#accelerator-doc
+* Docker Toolbox加速：http://docs.daocloud.io/faq/what-is-daocloud-accelerator#docker-toolbox
 * 使用docker hub官方应用mysql/php/nginx，具体参考*/Dockerfile
 * 默认采用Asia/Shanghai时区，国人开发更方便
 * 默认配置好nginx多虚拟主机环境，可以在host主机按范本修改虚拟主机配置以满足自己的需求
