@@ -1,6 +1,6 @@
 version: '2'
 services:
-  mariadb:
+  mysql:
     build: ./mysql
     volumes:
       - /mnt/data/mysql:/var/lib/mysql
@@ -16,9 +16,9 @@ services:
     build: ./php-fpm
     image: bravist/php-7.0-fpm-alpine:1.0
     links:
-      - mariadb
+      - mysql
     volumes_from:
-      - web-root-docker
+      - web_root_docker
     ports:
       - "9000:9000"
     restart: always
@@ -41,8 +41,8 @@ services:
     ports:
       - "6379:6379"
     restart: always
-  web-root-docker:
-    image: busybox:latest
+  web_root_docker:
+    image: tianon:true
     volumes: 
-      - "../Server:/mnt/www"
+      - "/mnt/www:/mnt/www"
 
