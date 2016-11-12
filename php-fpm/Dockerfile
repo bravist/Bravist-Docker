@@ -7,9 +7,6 @@ RUN apk update && apk upgrade
 
 #时区配置
 ENV TIMEZONE Asia/Shanghai
-RUN apk add tzdata
-RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
-RUN echo $TIMEZONE > /etc/timezone
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
 RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
