@@ -22,6 +22,7 @@ RUN docker-php-ext-install pdo_mysql
 
 #工作目录
 RUN mkdir /mnt/www
+RUN mkdir /var/opt/gitlab
 
 WORKDIR /mnt/www
 

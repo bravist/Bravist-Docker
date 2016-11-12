@@ -32,6 +32,7 @@ services:
       - php-fpm
     volumes: 
       - "../../data/nginx/conf:/etc/nginx/conf.d"
+      - /var/opt/gitlab:/var/opt/gitlab
     # volumes: 
     #   - "../Runtime/logs/nginx:/var/log/nginx"
     ports:
