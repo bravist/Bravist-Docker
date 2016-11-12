@@ -3,7 +3,7 @@ services:
   mysql:
     build: ./mysql
     volumes:
-      - /mnt/data/mysql:/var/lib/mysql
+      - ../../data/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:
@@ -31,7 +31,7 @@ services:
     volumes_from:
       - php-fpm
     volumes: 
-      - "/mnt/data/nginx/conf:/etc/nginx/conf.d"
+      - "../../data/nginx/conf:/etc/nginx/conf.d"
     # volumes: 
     #   - "../Runtime/logs/nginx:/var/log/nginx"
     ports:
@@ -46,5 +46,5 @@ services:
   web_root_docker:
     image: tianon/true
     volumes: 
-      - "/mnt/www:/mnt/www"
+      - "../../www:/mnt/www"
 
