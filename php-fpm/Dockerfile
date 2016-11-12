@@ -16,7 +16,7 @@ RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --in
 RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 # 安装git
-RUN apk git
+RUN apk add git
 
 # pdo_mysql 扩展
 RUN docker-php-ext-install pdo_mysql
