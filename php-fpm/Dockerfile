@@ -24,7 +24,6 @@ RUN docker-php-ext-install mysqli
 
 #工作目录
 RUN mkdir /mnt/www
-RUN usermod -u 1000 www
 
 WORKDIR /mnt/www
 
