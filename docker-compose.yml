@@ -1,19 +1,19 @@
 version: '2'
 services:
   mariadb:
-    build: mariadb
-    image: bravist/mariadb:1.0
-    volumes_from:
-      - "mysql-data-docker"
-#    volumes:
-#      - "../Runtime/logs/mysql:/var/log/mysql"
+    build: ./mysql
+    volumes:
+      - /mnt/data/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:
+      - MYSQL_DATABASE=mysql
+      - MYSQL_USER=developer
+      - MYSQL_PASSWORD=developer
       - MYSQL_ROOT_PASSWORD=root
     restart: always
   php-fpm:
-    build: php-fpm
+    build: ./php-fpm
     image: bravist/php-7.0-fpm-alpine:1.0
     links:
       - mariadb
@@ -45,8 +45,4 @@ services:
     image: busybox:latest
     volumes: 
       - "../Server:/mnt/www"
-  mysql-data-docker:
-    image: busybox:latest
-    volumes: 
-      - "../Runtime/Mysql:/var/lib/mysql"
 
