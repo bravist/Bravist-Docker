@@ -17,6 +17,7 @@ services:
     image: bravist/php-7.0-fpm-alpine:1.0
     links:
       - mysql
+      - redis
     volumes_from:
       - web_root_docker
     ports:
@@ -30,14 +31,15 @@ services:
     volumes_from:
       - php-fpm
     volumes: 
-      - "../Runtime/Nginx:/etc/nginx/conf.d"
+      - "/mnt/data/nginx/conf:/etc/nginx/conf.d"
     # volumes: 
     #   - "../Runtime/logs/nginx:/var/log/nginx"
     ports:
       - "80:80"
     restart: always
   redis:
-    image: redis:alpine
+    build: ./redis
+    image: bravist/redis:1.0
     ports:
       - "6379:6379"
     restart: always
