@@ -33,7 +33,7 @@ services:
     volumes: 
       - "../../data/nginx/conf:/etc/nginx/conf.d"
       - /var/opt/gitlab:/var/opt/gitlab
-      - /opt/gitlab:/opt/gitlab/
+      - /opt/gitlab:/opt/gitlab
     # volumes: 
     #   - "../Runtime/logs/nginx:/var/log/nginx"
     ports:
