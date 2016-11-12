@@ -13,6 +13,10 @@ RUN echo $TIMEZONE > /etc/timezone
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
 RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
+RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+# 安装git
+RUN apk --update add git
 
 # pdo_mysql 扩展
 RUN docker-php-ext-install pdo_mysql
@@ -20,6 +24,7 @@ RUN docker-php-ext-install mysqli
 
 #工作目录
 RUN mkdir /mnt/www
+
 WORKDIR /mnt/www
 
 # 端口号配置

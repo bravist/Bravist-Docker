@@ -17,11 +17,9 @@ WORKDIR /mnt/www
 # 端口号配置
 EXPOSE 80 443
 
-VOLUME ["/var/log/nginx"]
+ADD nginx.conf /etc/nginx/
 
-
-COPY conf/ /etc/nginx/conf.d/
-
+COPY conf/* /etc/nginx/conf.d/
 
 # 容器命令执行
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
