@@ -20,7 +20,6 @@ RUN apk --update add git
 
 # pdo_mysql 扩展
 RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-install mysqli
 
 #工作目录
 RUN mkdir /mnt/www
