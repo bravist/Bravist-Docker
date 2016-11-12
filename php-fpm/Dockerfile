@@ -14,6 +14,8 @@ RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 # 安装git
 RUN apk --update add git
+# install ssh
+RUN apk --update add openssh
 
 # pdo_mysql 扩展
 RUN docker-php-ext-install pdo_mysql
