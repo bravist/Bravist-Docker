@@ -44,7 +44,7 @@ services:
       - "6379:6379"
     restart: always
   web_root_docker:
-    image: tianon:true
+    image: tianon/true
     volumes: 
       - "/mnt/www:/mnt/www"
 
