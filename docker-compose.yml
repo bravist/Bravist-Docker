@@ -31,6 +31,15 @@ services:
     volumes:
        - ./php-cli-daemon/supervisor.d:/etc/supervisor.d
     restart: always
+  php-cli-call:
+    build: php-cli
+    image: bravist/php-cli-call:1.0
+    volumes_from:
+       - web_root_docker
+    command: php /mnt/www/call.weipeiapp.com/start.php start
+    ports:
+      - "8190:8190"
+      - "8191:8191"
   nginx:
     build: nginx
     image: bravist/nginx:1.0
