@@ -40,6 +40,7 @@ services:
     ports:
       - "8190:8190"
       - "8191:8191"
+   restart: always
   nginx:
     build: nginx
     image: bravist/nginx:1.0
