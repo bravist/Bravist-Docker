@@ -40,7 +40,7 @@ services:
     ports:
       - "8190:8190"
       - "8191:8191"
-   restart: always
+    restart: always
   nginx:
     build: nginx
     image: bravist/nginx:1.0
@@ -52,8 +52,6 @@ services:
       - "../../data/nginx/conf:/etc/nginx/conf.d"
       - /var/opt/gitlab:/var/opt/gitlab
       - /opt/gitlab:/opt/gitlab
-    # volumes:
-    #   - "../Runtime/logs/nginx:/var/log/nginx"
     ports:
       - "80:80"
     restart: always
