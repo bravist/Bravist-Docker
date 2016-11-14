@@ -15,6 +15,9 @@ RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 # pdo_mysql 扩展
 RUN docker-php-ext-install pdo_mysql
 
+#mysqli
+RUN docker-php-ext-install mysqli
+
 # bamatch
 RUN docker-php-ext-install bcmath
 
