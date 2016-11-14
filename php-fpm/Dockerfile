@@ -8,9 +8,12 @@ RUN apk update && apk upgrade
 #时区配置
 ENV TIMEZONE Asia/Shanghai
 
-# 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
-RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
-RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+#composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php -r "if (hash_file('SHA384', 'composer-setup.php') === 'aa96f26c2b67226a324c27919f1eb05f21c248b987e6195cad9690d5c1ff713d53020a02ac8c217dbf90a7eacc9d141d') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+RUN php composer-setup.php
+RUN php -r "unlink('composer-setup.php');"
+
 
 # pdo_mysql 扩展
 RUN docker-php-ext-install pdo_mysql
