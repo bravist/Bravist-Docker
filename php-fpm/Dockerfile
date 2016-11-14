@@ -15,6 +15,13 @@ RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 # pdo_mysql 扩展
 RUN docker-php-ext-install pdo_mysql
 
+# bamatch
+RUN docker-php-ext-install bcmath
+
+# mcrypt
+RUN apk add libmcrypt-dev
+RUN docker-php-ext-install mcrypt
+
 #工作目录
 RUN mkdir /mnt/www
 RUN mkdir /var/opt/gitlab
