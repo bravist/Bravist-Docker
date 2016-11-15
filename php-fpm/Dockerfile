@@ -29,6 +29,9 @@ RUN docker-php-ext-install bcmath
 RUN apk add libmcrypt-dev
 RUN docker-php-ext-install mcrypt
 
+# 配置php.ini
+COPY config/php.ini /usr/local/etc/php/
+
 #工作目录
 RUN mkdir /mnt/www
 RUN mkdir /var/opt/gitlab
