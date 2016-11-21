@@ -9,8 +9,8 @@ services:
     environment:
       - MYSQL_DATABASE=mysql
       - MYSQL_USER=developer
-      - MYSQL_PASSWORD=developer
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=developer@weipei.cc
+      - MYSQL_ROOT_PASSWORD=developer@weipei.cc
     restart: always
   php-fpm:
     build: ./php-fpm
