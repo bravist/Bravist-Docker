@@ -3,7 +3,10 @@ FROM php:7.0-alpine
 MAINTAINER  bravist chenghuiyong1987@gmail.com
 
 # 换为国内镜像，以加速docker image制作速度
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
+RUN echo 'http://mirrors.ustc.edu.cn/alpine/edge/main' > /etc/apk/repositories
+RUN echo '@community http://mirrors.ustc.edu.cn/alpine/edge/community' >> /etc/apk/repositories
+RUN echo '@testing http://mirrors.ustc.edu.cn/alpine/edge/testing' >> /etc/apk/repositories
+
 RUN apk update && apk upgrade
 
 #时区配置
