@@ -25,5 +25,8 @@ RUN docker-php-ext-install bcmath
 # pcntl 扩展
 RUN docker-php-ext-install pcntl
 
+# zlib extensio
+RUN docker-php-ext-install zlib
+
 # zip
 RUN docker-php-ext-install zip

@@ -22,6 +22,9 @@ RUN docker-php-ext-install pdo_mysql
 # bamatch
 RUN docker-php-ext-install bcmath
 
+# zlib extensio
+RUN docker-php-ext-install zlib
+
 #zip
 RUN docker-php-ext-install zip
 

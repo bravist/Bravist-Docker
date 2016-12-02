@@ -32,6 +32,9 @@ RUN docker-php-ext-install bcmath
 RUN apk add libmcrypt-dev
 RUN docker-php-ext-install mcrypt
 
+# zlib extensio
+RUN docker-php-ext-install zlib
+
 # zip
 RUN docker-php-ext-install zip
 
