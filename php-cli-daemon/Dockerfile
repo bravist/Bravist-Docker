@@ -19,6 +19,9 @@ RUN docker-php-ext-install pdo_mysql
 # bamatch
 RUN docker-php-ext-install bcmath
 
+#zip
+RUN docker-php-ext-install zip
+
 # supervisor
 RUN apk add supervisor
 
