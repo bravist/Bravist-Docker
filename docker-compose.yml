@@ -9,8 +9,8 @@ services:
     environment:
       - MYSQL_DATABASE=mysql
       - MYSQL_USER=developer
-      - MYSQL_PASSWORD=developer
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=developer@weipei.cc
+      - MYSQL_ROOT_PASSWORD=developer@weipei.cc
     restart: always
   php-fpm:
     build: ./php-fpm
@@ -23,6 +23,24 @@ services:
     ports:
       - "9000:9000"
     restart: always
+  php-cli-daemon:
+    build: php-cli-daemon
+    image: bravist/php-cli-daemon:1.0
+    volumes_from:
+       - web_root_docker
+    volumes:
+       - ./php-cli-daemon/supervisor.d:/etc/supervisor.d
+    restart: always
+  php-cli-call:
+    build: php-cli
+    image: bravist/php-cli-call:1.0
+    volumes_from:
+       - web_root_docker
+    command: php /mnt/www/call.weipeiapp.com/start.php start
+    ports:
+      - "8190:8190"
+      - "8191:8191"
+    restart: always
   nginx:
     build: nginx
     image: bravist/nginx:1.0
@@ -30,10 +48,10 @@ services:
       - php-fpm
     volumes_from:
       - php-fpm
-    volumes: 
+    volumes:
       - "../../data/nginx/conf:/etc/nginx/conf.d"
-    # volumes: 
-    #   - "../Runtime/logs/nginx:/var/log/nginx"
+      - /var/opt/gitlab:/var/opt/gitlab
+      - /opt/gitlab:/opt/gitlab
     ports:
       - "80:80"
     restart: always
@@ -45,6 +63,6 @@ services:
     restart: always
   web_root_docker:
     image: tianon/true
-    volumes: 
+    volumes:
       - "../../www:/mnt/www"
 

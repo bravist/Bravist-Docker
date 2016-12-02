@@ -7,22 +7,37 @@ RUN apk update && apk upgrade
 
 #时区配置
 ENV TIMEZONE Asia/Shanghai
-RUN apk add tzdata
-RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
-RUN echo $TIMEZONE > /etc/timezone
 
-# 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
-RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
-RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+#composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php -r "if (hash_file('SHA384', 'composer-setup.php') === 'aa96f26c2b67226a324c27919f1eb05f21c248b987e6195cad9690d5c1ff713d53020a02ac8c217dbf90a7eacc9d141d') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+RUN php composer-setup.php
+RUN php -r "unlink('composer-setup.php');"
+RUN mv /var/www/html/composer.phar /usr/bin/composer
 
-# 安装git
-RUN apk --update add git
 
 # pdo_mysql 扩展
 RUN docker-php-ext-install pdo_mysql
 
+#mysqli
+RUN docker-php-ext-install mysqli
+
+# bamatch
+RUN docker-php-ext-install bcmath
+
+# mcrypt
+RUN apk add libmcrypt-dev
+RUN docker-php-ext-install mcrypt
+
+# zip
+RUN docker-php-ext-install zip
+
+# 配置php.ini
+COPY config/php.ini /usr/local/etc/php/
+
 #工作目录
 RUN mkdir /mnt/www
+RUN mkdir /var/opt/gitlab
 
 WORKDIR /mnt/www
 
