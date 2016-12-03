@@ -1,4 +1,4 @@
-FROM php:7.0-alpine
+FROM alpine:latest
 
 MAINTAINER  bravist chenghuiyong1987@gmail.com
 
@@ -9,27 +9,39 @@ RUN echo '@testing http://mirrors.ustc.edu.cn/alpine/edge/testing' >> /etc/apk/r
 
 RUN apk update && apk upgrade
 
+RUN apk add php7@community \
+        php7-dom@community \
+        php7-ctype@community \
+        php7-curl@community \
+        php7-gd@community \
+        php7-intl@community \
+        php7-json@community \
+        php7-mbstring@community \
+        php7-mcrypt@community \
+        php7-mysqlnd@community \
+        php7-opcache@community \
+        php7-pdo@community \
+        php7-pdo_mysql@community \
+        php7-posix@community \
+        php7-session@community \
+        php7-xml@community \
+        php7-iconv@community \
+        php7-phar@community \
+        php7-openssl@community \
+        php7-zip@community \
+        php7-bcmath@community \
+        php7-pcntl@community \
+        php7-zlib@community 
+
+RUN ln -s /usr/bin/php7 /usr/bin/php
+#php.ini /etc/php7/php.ini
+
+
 #时区配置
 ENV TIMEZONE Asia/Shanghai
 
-# mcrypt 扩展
-RUN apk add libmcrypt-dev
-RUN docker-php-ext-install mcrypt
-
-# pdo_mysql 扩展
-RUN docker-php-ext-install pdo_mysql
-
-# bamatch
-RUN docker-php-ext-install bcmath
-
-# zlib extensio
-RUN docker-php-ext-install zlib
-
-#zip
-RUN docker-php-ext-install zip
-
 # supervisor
-RUN apk add supervisor
+RUN apk add supervisor@community
 
 RUN mkdir -p /etc/supervisor.d
 
