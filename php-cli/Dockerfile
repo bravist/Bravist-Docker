@@ -33,7 +33,7 @@ RUN apk add php7@community \
         php7-pcntl@community \
         php7-zlib@community 
 
-RUN ln -s /usr/bin/php7 /usr/bin/php
+RUN ln -s /usr/bin/php7 /usr/local/bin/php
 #php.ini /etc/php7/php.ini
 
 
