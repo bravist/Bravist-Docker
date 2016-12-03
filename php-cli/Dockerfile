@@ -12,7 +12,6 @@ RUN apk --update add \
         php7-dom \
         php7-ctype \
         php7-curl \
-        php7-fpm \
         php7-gd \
         php7-intl \
         php7-json \
