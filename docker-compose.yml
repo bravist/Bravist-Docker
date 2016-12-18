@@ -15,7 +15,7 @@ services:
   php-fpm:
     build: ./php-fpm
     image: bravist/php-7.0-fpm-alpine:1.0
-    links:
+    # links:
       # - mysql
       # - redis
     volumes_from:
