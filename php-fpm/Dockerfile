@@ -36,14 +36,14 @@ RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install zlib
 
 # zip
-RUN docker-php-ext-install zip
+# RUN docker-php-ext-install zip
 
 # 配置php.ini
 COPY config/php.ini /usr/local/etc/php/
 
 #工作目录
 RUN mkdir /mnt/www
-RUN mkdir /var/opt/gitlab
+#RUN mkdir /var/opt/gitlab
 
 WORKDIR /mnt/www
 
