@@ -38,6 +38,11 @@ RUN docker-php-ext-install zlib
 # zip
 RUN docker-php-ext-install zip
 
+# gd
+RUN apk add libjpeg-turbo-dev
+RUN apk add libpng-dev
+RUN docker-php-ext-install gd
+
 # 配置php.ini
 COPY config/php.ini /usr/local/etc/php/
 
