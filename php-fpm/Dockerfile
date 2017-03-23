@@ -56,4 +56,4 @@ WORKDIR /mnt/www
 EXPOSE 9000
 
 # 容器命令执行
-CMD ["php-fpm"]
+CMD ["php-fpm", "crond"]
