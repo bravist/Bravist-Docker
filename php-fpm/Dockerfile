@@ -43,6 +43,9 @@ RUN apk add libjpeg-turbo-dev
 RUN apk add libpng-dev
 RUN docker-php-ext-install gd
 
+# Crontab 
+RUN apk add -y apk-cron
+
 # 配置php.ini
 COPY config/php.ini /usr/local/etc/php/
 
